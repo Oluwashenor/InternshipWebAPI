@@ -2,7 +2,7 @@
 {
     public enum QuestionType
     {
-        Paragraph,
+        Paragraph=0,
         ShortAnswer,
         YesNo,
         Dropdown,
@@ -14,7 +14,7 @@
 
     public enum StageType
     {
-        ShortListing,
+        ShortListing=0,
         VideoInterview,
         Placement
     }
