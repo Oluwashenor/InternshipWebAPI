@@ -65,7 +65,7 @@ namespace InternshipWebAPI.Repository.Services
             }
             _context.Update(program);
             await _context.SaveChangesAsync();
-            return _responseService.SuccessResponse(program.MapProgramToDTO(workFlow, formTemplate));
+            return _responseService.SuccessResponse(program.MapProgramToDTO(program.Workflow, program.ApplicationTemplate));
         }
     }
 }

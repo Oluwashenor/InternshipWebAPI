@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InternshipWebAPI.Domain.DTOs
 {
-    public class WorkflowDTO
+    public class WorkflowDTO : BaseModel
     {
-        public string Id { get; set; }
         public string ProgramTemplateId { get; set; }
         public List<Stage>? Workflows { get; set; }
     }

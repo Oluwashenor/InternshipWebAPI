@@ -83,10 +83,11 @@ namespace InternshipWebAPI.Utilities
         public static Workflow MapToModel(this CreateWorkFlowDTO model)
         {
             if (model == null) return null;
-            return new Workflow()
+            var res = new Workflow()
             {
                 Workflows = model?.Workflows
             };
+            return res;
         }
 
         public static ApplicationFormTemplate MapToModel(this CreateApplicationTemplateDTO model)

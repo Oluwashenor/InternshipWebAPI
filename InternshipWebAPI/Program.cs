@@ -22,6 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IProgramTemplateService, ProgramTemplateService>();
 builder.Services.AddScoped<IApplicationTemplateService, ApplicationTemplateService>();
+builder.Services.AddScoped<IWorkflowService, WorkflowService>();
 builder.Services.AddScoped<IResponseService, ResponseService>();
 
 var app = builder.Build();
