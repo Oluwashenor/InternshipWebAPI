@@ -22,12 +22,12 @@ namespace InternshipWebAPI.Controllers
             return Ok(application);
         }
 
-        [HttpPost(Name = "Create Workflow")]
-        public async Task<IActionResult> CreateWorkFlow([FromBody] CreateWorkFlowDTO model)
-        {
-            var created = await _workflowService.CreateWorkflow(model);
-            return Ok(created);
-        }
+        //[HttpPost(Name = "Create Workflow")]
+        //public async Task<IActionResult> CreateWorkFlow([FromBody] CreateWorkFlowDTO model)
+        //{
+        //    var created = await _workflowService.CreateWorkflow(model);
+        //    return Ok(created);
+        //}
 
         [HttpPut("{programId}")]
         public async Task<IActionResult> UpdateWorkFlow(string programId, [FromBody] CreateWorkFlowDTO model)

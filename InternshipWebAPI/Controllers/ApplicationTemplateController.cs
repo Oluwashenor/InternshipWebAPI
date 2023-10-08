@@ -29,11 +29,11 @@ namespace InternshipWebAPI.Controllers
             return Ok(application);
         }
 
-        [HttpPost(Name = "Create Application")]
-        public async Task<IActionResult> CreateApplication([FromBody] CreateApplicationTemplateDTO model)
-        {
-            var created = await _applicationService.CreateApplicationTemplate(model);
-            return Ok(created);
-        }
+        //[HttpPost(Name = "Create Application")]
+        //public async Task<IActionResult> CreateApplication([FromBody] CreateApplicationTemplateDTO model)
+        //{
+        //    var created = await _applicationService.CreateApplicationTemplate(model);
+        //    return Ok(created);
+        //}
     }
 }

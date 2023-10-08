@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "07ef73ab-841f-4b18-a180-83f7ae936ce1",
+		"name": "InternshipWebAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10066551"
+	},
+	"item": [
+		{
+			"name": "Program",
+			"item": [
+				{
+					"name": "Create Program",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Microsft Long Internship\",\r\n  \"summary\": \"This program offers a unique learning experience.\",\r\n  \"description\": \"Participants will learn various skills and techniques.\",\r\n  \"benefit\": [\r\n    \"you get to Learn from the world brightest minds\",\r\n    \"Montly stipends\"\r\n  ],\r\n  \"criteria\": \"Open to individuals passionate about learning.\",\r\n  \"skills\": [\r\n    \"Communication\",\r\n    \"Problem-solving\",\r\n    \"Teamwork\",\r\n    \"HTML\",\r\n    \"CSS\"\r\n  ],\r\n  \"programType\": \"Workshop\",\r\n  \"programStart\": \"2023-10-15T09:00:00.000Z\",\r\n  \"applicationOpen\": \"2023-09-15T00:00:00.000Z\",\r\n  \"applicationClose\": \"2023-10-05T23:59:59.000Z\",\r\n  \"duration\": \"2 weeks\",\r\n  \"location\": \"Virtual/Online\",\r\n  \"minQualification\": \"Bachelor's degree\",\r\n  \"remote\": true,\r\n  \"maxApplicant\": 50\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7084/api/ProgramTemplate",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"ProgramTemplate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Program( with Application Template)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Microsft Summer Internship\",\r\n    \"summary\": \"This program offers a unique learning experience.\",\r\n    \"description\": \"Participants will learn various skills and techniques.\",\r\n    \"benefit\": [\r\n        \"Learn from fast paced environment\",\r\n        \"Montly stipends\"\r\n    ],\r\n    \"criteria\": \"Open to individuals passionate about learning.\",\r\n    \"skills\": [\r\n        \"Communication\",\r\n        \"Problem-solving\",\r\n        \"Teamwork\",\r\n        \"HTML\",\r\n        \"CSS\"\r\n    ],\r\n    \"programType\": \"Workshop\",\r\n    \"programStart\": \"2023-10-15T09:00:00.000Z\",\r\n    \"applicationOpen\": \"2023-09-15T00:00:00.000Z\",\r\n    \"applicationClose\": \"2023-10-05T23:59:59.000Z\",\r\n    \"duration\": \"2 weeks\",\r\n    \"location\": \"Virtual/Online\",\r\n    \"minQualification\": \"Bachelor's degree\",\r\n    \"remote\": true,\r\n    \"maxApplicant\": 50,\r\n    \"applicationTemplate\": {\r\n        \"programTemplateId\": \"6b831005-afea-48b5-ae61-b92513aa7570\",\r\n        \"questions\": [\r\n            {\r\n                \"question\": \"First Name\",\r\n                \"isRequired\": true,\r\n                \"dataType\": 1\r\n            },\r\n            {\r\n                \"question\": \"Last Name\",\r\n                \"isRequired\": true,\r\n                \"dataType\": 1\r\n            },\r\n            {\r\n                \"question\": \"Email\",\r\n                \"isRequired\": true,\r\n                \"dataType\": 1\r\n            },\r\n            {\r\n                \"question\": \"Phone\",\r\n                \"isRequired\": true,\r\n                \"dataType\": 1\r\n            },\r\n            {\r\n                \"question\": \"Date\",\r\n                \"isRequired\": false,\r\n                \"dataType\": 1\r\n            },\r\n            {\r\n                \"question\": \"Will you be willing to travel for business trips occasionally\",\r\n                \"isRequired\": true,\r\n                \"dataType\": 3,\r\n                \"additionalField\": [\r\n                    \"yes\",\r\n                    \"no\",\r\n                    \"maybe\"\r\n                ]\r\n            }\r\n        ],\r\n        \"education\": {\r\n            \"isRequired\": true,\r\n            \"questions\": [\r\n                {\r\n                    \"question\": \"School name\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 1\r\n                },\r\n                {\r\n                    \"question\": \"Degree Obtained\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 1\r\n                }\r\n            ]\r\n        },\r\n        \"experience\": {\r\n            \"isRequired\": true,\r\n            \"questions\": [\r\n                {\r\n                    \"question\": \"Your last company ?\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 1\r\n                },\r\n                {\r\n                    \"question\": \"Your role at said company ?\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 1\r\n                }\r\n            ]\r\n        },\r\n        \"resume\": {\r\n            \"isRequired\": true,\r\n            \"questions\": [\r\n                {\r\n                    \"question\": \"Upload a Resume\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 1\r\n                }\r\n            ]\r\n        }\r\n    },\r\n    \"workflow\": {\r\n        \"programTemplateId\":\"0defb82e-e323-4e56-a4c8-d4c79a447351\",\r\n        \"workflows\": [\r\n            {\r\n                \"name\": \"Video Application\",\r\n                \"stageType\": 0,\r\n                \"questions\": [\r\n                    {\r\n                        \"question\": \"what is your name\",\r\n                        \"isRequired\": true,\r\n                        \"questionType\": 0\r\n                    }\r\n                ],\r\n                \"hidden\": false\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7084/api/ProgramTemplate/ca991e96-1a63-4e74-ab89-dccd290ba69d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"ProgramTemplate",
+								"ca991e96-1a63-4e74-ab89-dccd290ba69d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Program",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7084/api/ProgramTemplate/fc17ee1f-99ea-43b7-8d38-6dccb63f107e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"ProgramTemplate",
+								"fc17ee1f-99ea-43b7-8d38-6dccb63f107e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Application Form",
+			"item": [
+				{
+					"name": "PUT Application",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n            \"id\": \"173e9e26-5c06-44a4-a79a-2fcbb76f44c7\",\r\n            \"programTitle\": null,\r\n            \"programTemplateId\": \"792391c7-5775-4cba-aef4-6e8dfd264a1e\",\r\n            \"questions\": [\r\n                {\r\n                    \"question\": \"First Namerer\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 0,\r\n                    \"additionalField\": null\r\n                },\r\n                {\r\n                    \"question\": \"Last Name\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 0,\r\n                    \"additionalField\": null\r\n                },\r\n                {\r\n                    \"question\": \"Email\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 0,\r\n                    \"additionalField\": null\r\n                },\r\n                {\r\n                    \"question\": \"Phone\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 0,\r\n                    \"additionalField\": null\r\n                },\r\n                {\r\n                    \"question\": \"Date\",\r\n                    \"isRequired\": false,\r\n                    \"questionType\": 0,\r\n                    \"additionalField\": null\r\n                },\r\n                {\r\n                    \"question\": \"Will you be willing to travel for business trips occasionally\",\r\n                    \"isRequired\": true,\r\n                    \"questionType\": 0,\r\n                    \"additionalField\": [\r\n                        \"yes\",\r\n                        \"no\",\r\n                        \"maybe\"\r\n                    ]\r\n                }\r\n            ],\r\n            \"programTemplate\": null,\r\n            \"education\": {\r\n                \"isRequired\": true,\r\n                \"questions\": [\r\n                    {\r\n                        \"question\": \"School name\",\r\n                        \"isRequired\": true,\r\n                        \"questionType\": 1,\r\n                        \"additionalField\": null\r\n                    },\r\n                    {\r\n                        \"question\": \"Degree Obtained\",\r\n                        \"isRequired\": true,\r\n                        \"questionType\": 1,\r\n                        \"additionalField\": null\r\n                    }\r\n                ]\r\n            },\r\n            \"experience\": {\r\n                \"isRequired\": true,\r\n                \"questions\": [\r\n                    {\r\n                        \"question\": \"Your last company ?\",\r\n                        \"isRequired\": true,\r\n                        \"questionType\": 1,\r\n                        \"additionalField\": null\r\n                    },\r\n                    {\r\n                        \"question\": \"Your role at said company ?\",\r\n                        \"isRequired\": true,\r\n                        \"questionType\": 1,\r\n                        \"additionalField\": null\r\n                    }\r\n                ]\r\n            },\r\n            \"resume\": {\r\n                \"isRequired\": true,\r\n                \"questions\": [\r\n                    {\r\n                        \"question\": \"Upload a Resume\",\r\n                        \"isRequired\": true,\r\n                        \"questionType\": 1,\r\n                        \"additionalField\": null\r\n                    }\r\n                ]\r\n            }\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7084/api/ApplicationTemplate/fc17ee1f-99ea-43b7-8d38-6dccb63f107e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"ApplicationTemplate",
+								"fc17ee1f-99ea-43b7-8d38-6dccb63f107e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Application",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7084/api/ApplicationTemplate/fc17ee1f-99ea-43b7-8d38-6dccb63f107e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"ApplicationTemplate",
+								"fc17ee1f-99ea-43b7-8d38-6dccb63f107e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Program Preview",
+			"item": [
+				{
+					"name": "Program preview",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7084/api/ProgramPreview/fc17ee1f-99ea-43b7-8d38-6dccb63f107e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"ProgramPreview",
+								"fc17ee1f-99ea-43b7-8d38-6dccb63f107e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Workflow",
+			"item": [
+				{
+					"name": "Update Workflow",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"programTemplateId\": \"fc17ee1f-99ea-43b7-8d38-6dccb63f107e\",\r\n  \"workflows\": [\r\n    {\r\n      \"name\": \"Video Stage\",\r\n      \"stageType\": 0,\r\n      \"questions\": [\r\n        {\r\n          \"question\": \"what is your name\",\r\n          \"isRequired\": true,\r\n          \"questionType\": 0\r\n        }\r\n      ],\r\n      \"hidden\": false\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7084/api/Workflow/fc17ee1f-99ea-43b7-8d38-6dccb63f107e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"Workflow",
+								"fc17ee1f-99ea-43b7-8d38-6dccb63f107e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workflow",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7084/api/Workflow/fc17ee1f-99ea-43b7-8d38-6dccb63f107e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7084",
+							"path": [
+								"api",
+								"Workflow",
+								"fc17ee1f-99ea-43b7-8d38-6dccb63f107e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": "",
+			"type": "string"
+		}
+	]
+}
