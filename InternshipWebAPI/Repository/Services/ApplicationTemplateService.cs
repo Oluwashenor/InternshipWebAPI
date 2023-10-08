@@ -18,9 +18,9 @@ namespace InternshipWebAPI.Repository.Services
             _responseService = responseService;
         }
 
-        public async Task<APIResponse<ApplicationTemplateDTO>> GetApplication(string id)
+        public async Task<APIResponse<ApplicationTemplateDTO>> GetApplication(string programId)
         {
-            var application = await _context.ApplicationFormTemplates.FirstOrDefaultAsync(x => x.Id == id);
+            var application = await _context.ApplicationFormTemplates.FirstOrDefaultAsync(x => x.ProgramTemplateId == programId);
             if (application == null)
                 return _responseService.ErrorResponse<ApplicationTemplateDTO>("Application not found");
             var program = await _context.ProgramTemplates.FindAsync(application?.ProgramTemplateId);
@@ -55,16 +55,45 @@ namespace InternshipWebAPI.Repository.Services
                 Education = model?.Education,
                 Experience = model?.Experience,
                 Resume = model?.Resume,
-                ProgramTemplateId = model.ProgramId,
+                ProgramTemplateId = model.ProgramTemplateId,
             };
             await _context.AddAsync(program);
             await _context.SaveChangesAsync();
             return _responseService.SuccessResponse(true);
         }
 
+        public async Task<APIResponse<bool>> UpdateApplicationTemplate(string programId, CreateApplicationTemplateDTO model)
+        {
+            var validateModel = ValidateModel(model);
+            if (!validateModel.Status)
+                return _responseService.ErrorResponse<bool>(validateModel.Message);
+            ApplicationFormTemplate formTemplate = await _context.ApplicationFormTemplates.FirstOrDefaultAsync(x => x.ProgramTemplateId == programId);
+            if (formTemplate == null)
+                return _responseService.ErrorResponse<bool>("Application Form Not Found");
+            var formTemplateNew = new ApplicationFormTemplate()
+            {
+                PersonalInfoQuestions = model?.Questions?.Select(x =>
+                new QuestionBlock
+                {
+                    QuestionType = x.QuestionType,
+                    IsRequired = x.IsRequired,
+                    Question = x.Question,
+                    AdditionalField = x.AdditionalField
+                }).ToList(),
+                Education = model?.Education,
+                Experience = model?.Experience,
+                Resume = model?.Resume,
+                ProgramTemplateId = formTemplate.ProgramTemplateId,
+            };
+            _context.Remove(formTemplate);
+            await _context.AddAsync(formTemplateNew);
+            await _context.SaveChangesAsync();
+            return _responseService.SuccessResponse(true);
+        }
+
         private APIResponse<CreateApplicationTemplateDTO> ValidateModel(CreateApplicationTemplateDTO model)
         {
-            if (model.ProgramId == default || model.ProgramId == "string")
+            if (model.ProgramTemplateId == default || model.ProgramTemplateId == "string")
             {
                 return _responseService.ErrorResponse<CreateApplicationTemplateDTO>("Program Id is Required");
             }

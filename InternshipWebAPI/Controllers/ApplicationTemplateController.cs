@@ -15,10 +15,17 @@ namespace InternshipWebAPI.Controllers
             _applicationService = applicationService;
         }
 
-        [HttpGet(Name = "Get Program")]
-        public async Task<IActionResult> GetApplication(string id)
+        [HttpGet("{programId}")]
+        public async Task<IActionResult> GetApplication(string programId)
         {
-            var application = await _applicationService.GetApplication(id);
+            var application = await _applicationService.GetApplication(programId);
+            return Ok(application);
+        }
+        
+        [HttpPut("{programId}")]
+        public async Task<IActionResult> PutApplication(string programId, [FromBody] CreateApplicationTemplateDTO model)
+        {
+            var application = await _applicationService.UpdateApplicationTemplate(programId, model);
             return Ok(application);
         }
 

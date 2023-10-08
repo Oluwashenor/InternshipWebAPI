@@ -6,5 +6,6 @@ namespace InternshipWebAPI.Repository.Interfaces
     {
         Task<APIResponse<bool>> CreateApplicationTemplate(CreateApplicationTemplateDTO model);
         Task<APIResponse<ApplicationTemplateDTO>> GetApplication(string id);
+        Task<APIResponse<bool>> UpdateApplicationTemplate(string programId, CreateApplicationTemplateDTO model);
     }
 }

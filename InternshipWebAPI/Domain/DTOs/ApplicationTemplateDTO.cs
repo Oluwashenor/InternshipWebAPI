@@ -18,12 +18,8 @@ namespace InternshipWebAPI.Domain.DTOs
 
     public class CreateApplicationTemplateDTO
     {
-        public CreateApplicationTemplateDTO()
-        {
-
-        }
         [Required]
-        public string? ProgramId { get; set; }
+        public string? ProgramTemplateId { get; set; }
         public List<CreateQuestionBlockDTO>? Questions { get; set; }
         public ProfileField? Education { get; set; }
         public ProfileField? Experience { get; set; }

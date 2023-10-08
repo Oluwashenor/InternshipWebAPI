@@ -6,18 +6,18 @@ namespace InternshipWebAPI.Utilities
 {
     public static class SharedMapping
     {
-        public static ProgramDTO ProgramMapToDTO(ProgramTemplate program)
-        {
-            return new ProgramDTO()
-            {
-                Id = program.Id,
-                Created = program.Created,
-                Title = program.Title,
-                Description = program.Description,
-            };
-        }
+        //public static ProgramDTO ProgramMapToDTO(ProgramTemplate program)
+        //{
+        //    return new ProgramDTO()
+        //    {
+        //        Id = program.Id,
+        //        Created = program.Created,
+        //        Title = program.Title,
+        //        Description = program.Description,
+        //    };
+        //}
 
-        public static ProgramDTO MapToDTO(this ProgramTemplate program, Workflow workflow, ApplicationFormTemplate applicationForm)
+        public static ProgramDTO MapProgramToDTO(this ProgramTemplate program, Workflow? workflow, ApplicationFormTemplate? applicationForm)
         {
             return new ProgramDTO()
             {
@@ -39,7 +39,19 @@ namespace InternshipWebAPI.Utilities
                     Resume = applicationForm.Resume,
                     Experience = applicationForm.Experience,
                     Questions = applicationForm.PersonalInfoQuestions
-                }
+                },
+                 ApplicationClose = program.ApplicationClose,
+                 ApplicationOpen = program.ApplicationOpen,
+                 ProgramStart = program.ProgramStart,
+                 Benefit = program.Benefit,
+                 Criteria = program.Criteria,
+                 MaxApplicant = program.MaxApplicant,
+                 MinimumQualification = program.MinimumQualification,
+                 ProgramType = program.ProgramType,
+                 Remote = program.Remote,
+                 Skills = program.Skills,
+                 Summary = program.Summary,
+                 Duration = program.Duration,
             };
         }
 
@@ -58,8 +70,14 @@ namespace InternshipWebAPI.Utilities
                 Location = model.Location,
                 Remote = model.Remote,
                 ApplicationTemplate = model?.ApplicationTemplate?.MapToModel(),
-                Workflow = model?.Workflow?.MapToModel()
-        };
+                Workflow = model?.Workflow?.MapToModel(),
+                ApplicationClose = model.ApplicationClose,
+                ApplicationOpen = model.ApplicationOpen,
+                ProgramStart = model.ProgramStart,
+                MinimumQualification = model.MinimumQualification,
+                Summary = model.Summary,
+                Duration = model.Duration,
+            };
         }
 
         public static Workflow MapToModel(this CreateWorkFlowDTO model)
@@ -87,7 +105,7 @@ namespace InternshipWebAPI.Utilities
                 Education = model?.Education,
                 Experience = model?.Experience,
                 Resume = model?.Resume,
-                ProgramTemplateId = model.ProgramId,
+                ProgramTemplateId = model.ProgramTemplateId,
             };
         }
 

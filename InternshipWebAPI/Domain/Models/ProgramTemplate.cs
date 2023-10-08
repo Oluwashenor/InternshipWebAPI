@@ -13,15 +13,14 @@ namespace InternshipWebAPI.Domain.Models
         public string? Criteria { get; set; }
         public List<string>? Skills { get; set; }
         public string? ProgramType { get; set; }
-        public DateTime? Start { get; set; }
-        public DateTime? Open { get; set; }
-        public DateTime? Close { get; set; }
+        public DateTime? ProgramStart { get; set; }
+        public DateTime? ApplicationOpen { get; set; }
+        public DateTime? ApplicationClose { get; set; }
         public string? Duration { get; set; }
         public string? Location { get; set; }
-        public string? MinQualification { get; set; }
+        public string? MinimumQualification { get; set; }
         public bool Remote { get; set; }
-        public int MaxApplicant { get; set; }
-        public string? ApplicationTemplateId { get; set; }
+        public long MaxApplicant { get; set; }
         public ApplicationFormTemplate? ApplicationTemplate { get; set; }
         public Workflow? Workflow { get; set; }
     }

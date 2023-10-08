@@ -3,9 +3,7 @@ using InternshipWebAPI.Domain.DTOs;
 using InternshipWebAPI.Domain.Models;
 using InternshipWebAPI.Repository.Interfaces;
 using InternshipWebAPI.Utilities;
-using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace InternshipWebAPI.Repository.Services
 {
@@ -28,16 +26,7 @@ namespace InternshipWebAPI.Repository.Services
                 return _responseService.ErrorResponse<ProgramDTO>("Program not found");
             var workflow = await _context.Workflows.FirstOrDefaultAsync(x => x.ProgramTemplateId == id);
             ApplicationFormTemplate formTemplates = await _context.ApplicationFormTemplates.FirstOrDefaultAsync(x => x.ProgramTemplateId == id);
-            var response = SharedMapping.MapToDTO(program, workflow, formTemplates);
-            return _responseService.SuccessResponse(response);
-        }
-
-        public async Task<APIResponse<ProgramDTO>> GetProgram(string id)
-        {
-            var program = await _context.ProgramTemplates.FirstOrDefaultAsync(x => x.Id == id);
-            if (program == null)
-                return _responseService.ErrorResponse<ProgramDTO>("Program not found");
-            var response = SharedMapping.ProgramMapToDTO(program);
+            var response = program.MapProgramToDTO(workflow, formTemplates);
             return _responseService.SuccessResponse(response);
         }
 
@@ -46,7 +35,7 @@ namespace InternshipWebAPI.Repository.Services
             var program = model.MapToModel();
             await _context.AddAsync(program);
             await _context.SaveChangesAsync();
-            return _responseService.SuccessResponse(SharedMapping.ProgramMapToDTO(program));
+            return _responseService.SuccessResponse(program.MapProgramToDTO(null,null));
         }
 
         public async Task<APIResponse<ProgramDTO>> PutProgram(string programId,CreateProgramDTO model)
@@ -76,7 +65,7 @@ namespace InternshipWebAPI.Repository.Services
             }
             _context.Update(program);
             await _context.SaveChangesAsync();
-            return _responseService.SuccessResponse(SharedMapping.ProgramMapToDTO(program));
+            return _responseService.SuccessResponse(program.MapProgramToDTO(workFlow, formTemplate));
         }
     }
 }
