@@ -15,7 +15,7 @@ namespace InternshipWebAPI.Controllers
             _programService = programService;
         }
 
-        [HttpGet(Name = "PreviewProgram")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProgram(string id)
         {
             var program = await _programService.GetProgramDetail(id);

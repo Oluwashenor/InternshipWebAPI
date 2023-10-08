@@ -16,10 +16,10 @@ namespace InternshipWebAPI.Controllers
             _programService = programService;
         }
 
-        [HttpGet(Name = "GetProgram")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProgram(string id)
         {
-            APIResponse<ProgramDTO> program = await _programService.GetProgram(id);
+            APIResponse<ProgramDTO> program = await _programService.GetProgramDetail(id);
             return Ok(program);
         }
 

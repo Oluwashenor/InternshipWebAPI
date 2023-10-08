@@ -17,10 +17,10 @@ namespace InternshipWebAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProgramTemplate>()
-            .HasOne(p => p.ApplicationTemplate)
-            .WithMany()
-            .HasForeignKey(p => p.ApplicationTemplateId);
+            //modelBuilder.Entity<ProgramTemplate>()
+            //.HasOne(p => p.ApplicationTemplate)
+            //.WithMany()
+            //.HasForeignKey(p => p.ApplicationTemplateId);
             //modelBuilder.Entity<ProgramTemplate>().ToContainer("Programs");
             //modelBuilder.Entity<ProgramTemplate>().HasKey("Id");
             //modelBuilder.Entity<ProgramTemplate>().HasPartitionKey("key");
