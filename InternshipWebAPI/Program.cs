@@ -1,6 +1,8 @@
 using InternshipWebAPI.Data;
+using InternshipWebAPI.Repository.Interfaces;
+using InternshipWebAPI.Repository.Services;
+using InternshipWebAPI.Utilities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +20,15 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseCosmos(connectionString, cosmosDB);
 });
 
+builder.Services.AddScoped<IProgramTemplateService, ProgramTemplateService>();
+builder.Services.AddScoped<IApplicationTemplateService, ApplicationTemplateService>();
+builder.Services.AddScoped<IResponseService, ResponseService>();
+
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+await context.Database.EnsureCreatedAsync();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

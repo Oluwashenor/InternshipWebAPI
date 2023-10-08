@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternshipWebAPI", "InternshipWebAPI\InternshipWebAPI.csproj", "{0A361786-8220-4D5E-8F6E-231F2471B12B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternshipWebAPI", "InternshipWebAPI\InternshipWebAPI.csproj", "{0A361786-8220-4D5E-8F6E-231F2471B12B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
