@@ -42,6 +42,7 @@ namespace InternshipWebAPI.Domain.DTOs
         public bool Remote { get; set; }
         public int MaxApplicant { get; set; }
         public CreateApplicationTemplateDTO? ApplicationTemplate { get; set; }
+        public CreateWorkFlowDTO? Workflow { get; set; }
     }
 
 

@@ -57,18 +57,23 @@ namespace InternshipWebAPI.Repository.Services
             if (program == default)
                 return _responseService.ErrorResponse<ProgramDTO>("Program not found");
             ApplicationFormTemplate formTemplate = await _context.ApplicationFormTemplates.FirstOrDefaultAsync(x => x.ProgramTemplateId == program.Id);
+            Workflow workFlow = await _context.Workflows.FirstOrDefaultAsync(x => x.ProgramTemplateId == program.Id);
             var updateModel = model.MapToModel();
             if (updateModel.ApplicationTemplate != null)
             {
                 updateModel.ApplicationTemplate.ProgramTemplateId = program.Id;
-                if(formTemplate != null)
-                {
+                if (formTemplate != null)
                     _context.ApplicationFormTemplates.Remove(formTemplate);
-                }
-                
                 program.ApplicationTemplate = updateModel.ApplicationTemplate;
 
-            }        
+            } 
+            if(updateModel.Workflow != null)
+            {
+                updateModel.Workflow.ProgramTemplateId = program.Id;
+                if (workFlow != null)
+                    _context.Workflows.Remove(workFlow);
+                program.Workflow = updateModel.Workflow;   
+            }
             _context.Update(program);
             await _context.SaveChangesAsync();
             return _responseService.SuccessResponse(SharedMapping.ProgramMapToDTO(program));

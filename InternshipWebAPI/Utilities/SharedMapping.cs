@@ -57,7 +57,17 @@ namespace InternshipWebAPI.Utilities
                 MaxApplicant = model.MaxApplicant,
                 Location = model.Location,
                 Remote = model.Remote,
-                ApplicationTemplate = model.ApplicationTemplate.MapToModel()
+                ApplicationTemplate = model?.ApplicationTemplate?.MapToModel(),
+                Workflow = model?.Workflow?.MapToModel()
+        };
+        }
+
+        public static Workflow MapToModel(this CreateWorkFlowDTO model)
+        {
+            if (model == null) return null;
+            return new Workflow()
+            {
+                Workflows = model?.Workflows
             };
         }
 
